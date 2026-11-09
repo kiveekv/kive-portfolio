@@ -58,11 +58,19 @@
   "portfolio": [
     {
       "category": "ppt",
-      "title": "02 프로필",
-      "path": "./portfolio/1794232125370-1-02-.png",
+      "title": "03 좋아하는 것, 싫어하는 것",
+      "path": "./portfolio/1794232160272-1-03-.png",
       "width": 8000,
       "height": 4501,
-      "createdAt": "2026-11-09T13:48:48.423Z"
+      "createdAt": "2026-11-09T13:49:24.862Z"
+    },
+    {
+      "category": "ppt",
+      "title": "01 표지",
+      "path": "./portfolio/1794232156074-0-01-.png",
+      "width": 8000,
+      "height": 4500,
+      "createdAt": "2026-11-09T13:49:20.272Z"
     },
     {
       "category": "ppt",
@@ -71,6 +79,14 @@
       "width": 8000,
       "height": 4500,
       "createdAt": "2026-11-09T13:48:45.370Z"
+    },
+    {
+      "category": "ppt",
+      "title": "02 프로필",
+      "path": "./portfolio/1794232125370-1-02-.png",
+      "width": 8000,
+      "height": 4501,
+      "createdAt": "2026-11-09T13:48:48.423Z"
     },
     {
       "category": "ppt",
