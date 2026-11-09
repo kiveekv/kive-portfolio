@@ -55,7 +55,14 @@
       "label": "치지직 배너"
     }
   ],
-  "portfolio": [],
+  "portfolio": [
+    {
+      "category": "poster",
+      "title": "포스터",
+      "path": "./portfolio/1794230052282-0--.png",
+      "createdAt": "2026-11-09T13:14:17.447Z"
+    }
+  ],
   "portfolioSortMode": "latest",
   "prices": {
     "intro": "사용 목적에 따라 가격 및 사용 범위가 상이합니다.",
