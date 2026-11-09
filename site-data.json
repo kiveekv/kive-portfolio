@@ -112,15 +112,15 @@
     },
     {
       "category": "poster",
-      "title": "RE-DEBUT 포스터",
-      "path": "./portfolio/1794230113466-0-RE-DEBUT-.png",
-      "createdAt": "2026-11-09T13:15:18.862Z"
-    },
-    {
-      "category": "poster",
       "title": "데뷔 이벤트 포스터",
       "path": "./portfolio/1794230118863-1--.png",
       "createdAt": "2026-11-09T13:15:22.940Z"
+    },
+    {
+      "category": "poster",
+      "title": "RE-DEBUT 포스터",
+      "path": "./portfolio/1794230113466-0-RE-DEBUT-.png",
+      "createdAt": "2026-11-09T13:15:18.862Z"
     },
     {
       "category": "poster",
@@ -147,7 +147,7 @@
       "createdAt": "2026-11-09T13:14:17.447Z"
     }
   ],
-  "portfolioSortMode": "latest",
+  "portfolioSortMode": "manual",
   "prices": {
     "intro": "사용 목적에 따라 가격 및 사용 범위가 상이합니다.",
     "base": [
