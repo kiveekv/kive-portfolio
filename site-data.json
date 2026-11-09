@@ -57,6 +57,12 @@
   ],
   "portfolio": [
     {
+      "category": "schedule",
+      "title": "[엔뮤님] 스케줄표",
+      "path": "./portfolio/1794230155845-0--.png",
+      "createdAt": "2026-11-09T13:15:59.938Z"
+    },
+    {
       "category": "poster",
       "title": "RE-DEBUT 포스터",
       "path": "./portfolio/1794230113466-0-RE-DEBUT-.png",
