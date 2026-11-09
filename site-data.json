@@ -58,6 +58,14 @@
   "portfolio": [
     {
       "category": "schedule",
+      "title": "스케줄표 샘플3",
+      "path": "./portfolio/1794231282370-0--3.png",
+      "width": 3841,
+      "height": 2161,
+      "createdAt": "2026-11-09T13:34:44.590Z"
+    },
+    {
+      "category": "schedule",
       "title": "스케줄표 샘플1",
       "path": "./portfolio/1794231272482-0--1.png",
       "width": 3841,
