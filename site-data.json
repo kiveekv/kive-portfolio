@@ -58,6 +58,14 @@
   "portfolio": [
     {
       "category": "thumbnail",
+      "title": "다시보기 썸네일 미리보기(흰)",
+      "path": "./portfolio/1794232217075-0--.png",
+      "width": 5760,
+      "height": 3240,
+      "createdAt": "2026-11-09T13:50:20.315Z"
+    },
+    {
+      "category": "thumbnail",
       "title": "다시보기 썸네일",
       "path": "./portfolio/1794232207110-0--.png",
       "width": 5760,
