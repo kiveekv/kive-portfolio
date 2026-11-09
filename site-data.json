@@ -57,6 +57,22 @@
   ],
   "portfolio": [
     {
+      "category": "ppt",
+      "title": "03 프로필 소개",
+      "path": "./portfolio/1794232104125-1-03-.png",
+      "width": 8001,
+      "height": 4501,
+      "createdAt": "2026-11-09T13:48:28.333Z"
+    },
+    {
+      "category": "ppt",
+      "title": "01 표지",
+      "path": "./portfolio/1794232099666-0-01-.png",
+      "width": 8000,
+      "height": 4500,
+      "createdAt": "2026-11-09T13:48:24.125Z"
+    },
+    {
       "category": "schedule",
       "title": "스케줄표 샘플2",
       "path": "./portfolio/1794231290470-0--2.png",
