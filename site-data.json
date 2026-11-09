@@ -57,6 +57,22 @@
   ],
   "portfolio": [
     {
+      "category": "banner",
+      "title": "치지직 배너 샘플2",
+      "path": "./portfolio/1794232274411-1--2.png",
+      "width": 3841,
+      "height": 1081,
+      "createdAt": "2026-11-09T13:51:17.855Z"
+    },
+    {
+      "category": "banner",
+      "title": "치지직 배너 샘플1",
+      "path": "./portfolio/1794232271058-0--1.png",
+      "width": 3841,
+      "height": 1081,
+      "createdAt": "2026-11-09T13:51:14.410Z"
+    },
+    {
       "category": "youtube",
       "title": "[마리님] 유튜브 채널 아트",
       "path": "./portfolio/1794232242227-0--.png",
