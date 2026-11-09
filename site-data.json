@@ -58,6 +58,12 @@
   "portfolio": [
     {
       "category": "poster",
+      "title": "[아로님] 포스터",
+      "path": "./portfolio/1794230069593-0--.png",
+      "createdAt": "2026-11-09T13:14:34.048Z"
+    },
+    {
+      "category": "poster",
       "title": "포스터",
       "path": "./portfolio/1794230052282-0--.png",
       "createdAt": "2026-11-09T13:14:17.447Z"
