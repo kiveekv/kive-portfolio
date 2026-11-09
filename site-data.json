@@ -58,19 +58,19 @@
   "portfolio": [
     {
       "category": "ppt",
-      "title": "03 좋아하는 것, 싫어하는 것",
-      "path": "./portfolio/1794232160272-1-03-.png",
-      "width": 8000,
-      "height": 4501,
-      "createdAt": "2026-11-09T13:49:24.862Z"
-    },
-    {
-      "category": "ppt",
       "title": "01 표지",
       "path": "./portfolio/1794232156074-0-01-.png",
       "width": 8000,
       "height": 4500,
       "createdAt": "2026-11-09T13:49:20.272Z"
+    },
+    {
+      "category": "ppt",
+      "title": "03 좋아하는 것, 싫어하는 것",
+      "path": "./portfolio/1794232160272-1-03-.png",
+      "width": 8000,
+      "height": 4501,
+      "createdAt": "2026-11-09T13:49:24.862Z"
     },
     {
       "category": "ppt",
