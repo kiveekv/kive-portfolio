@@ -847,6 +847,64 @@ body.price-mode{font-family:"SUIT","Wanted Sans",system-ui,sans-serif}
 @media(max-width:480px){.contact-logo-box img{width:100% !important}}
 @media(prefers-reduced-motion:reduce){.contact-logo-box img{animation:none}}
 </style>
+
+<style id="kive-mobile-final-refinements">
+/* Mobile: reduce only the top logo; keep its alignment and static behavior. */
+@media (max-width:700px) {
+  #siteLogo {
+    width:min(34vw, 122px) !important;
+    max-width:122px !important;
+    max-height:82px !important;
+    height:auto !important;
+    margin-bottom:11px !important;
+  }
+
+  /* Slightly more breathing room at both sides on phones. */
+  .site-header,.section,.site-footer {
+    width:calc(100% - 60px) !important;
+  }
+
+  /* A subtle step down in PRICE typography for narrow screens. */
+  .price-intro { font-size:12.5px !important; }
+  .price-type { font-size:12px !important; }
+  .license-table { font-size:10.5px !important; }
+  .price-card h3 { font-size:15px !important; }
+  .price-row b { font-size:12.5px !important; }
+  .price-row small { font-size:10.5px !important; }
+  .price-row strong { font-size:13.5px !important; }
+}
+@media (max-width:380px) {
+  .site-header,.section,.site-footer {
+    width:calc(100% - 52px) !important;
+  }
+  #siteLogo {
+    width:min(32vw, 108px) !important;
+    max-width:108px !important;
+    max-height:74px !important;
+  }
+}
+</style>
+
+
+<style id="kive-mobile-contact-logo-size">
+/* Mobile only: slightly reduce the floating CONTACT logo while keeping it centered. */
+@media (max-width:700px) {
+  .contact-logo-box img {
+    width:90% !important;
+    max-width:320px !important;
+    display:block !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+}
+@media (max-width:380px) {
+  .contact-logo-box img {
+    width:88% !important;
+    max-width:280px !important;
+  }
+}
+</style>
+
 </head><body><div class="page">
 <header class="site-header">
       <a class="logo-link" href="#info" aria-label="KIVE home" id="homeLogoLink">
@@ -1064,7 +1122,7 @@ body.price-mode{font-family:"SUIT","Wanted Sans",system-ui,sans-serif}
       if(section){
         const intro=section.querySelector('.price-intro');if(intro&&p.intro!==undefined)intro.textContent=p.intro;
         const cards=section.querySelectorAll('.price-card');
-        const renderRows=(card,items,extra)=>{if(!card)return;card.innerHTML='';(items||[]).forEach(item=>{const row=document.createElement('div');row.className='price-row';const left=document.createElement('div'),b=document.createElement('b'),strong=document.createElement('strong');b.textContent=item.name||'';left.appendChild(b);if(item.desc){const sm=document.createElement('small');sm.textContent=item.desc;left.appendChild(sm);}strong.textContent=(extra?'+':'')+Number(item.price||0).toLocaleString('ko-KR')+'원';strong.dataset.base=String(item.price||0);strong.dataset.extra=extra?'1':'0';row.append(left,strong);card.appendChild(row);});};
+        const renderRows=(card,items,extra)=>{if(!card)return;const heading=card.querySelector('h3');const headingText=heading?heading.textContent:'';card.innerHTML='';if(headingText){const h=document.createElement('h3');h.textContent=headingText;card.appendChild(h);}(items||[]).forEach(item=>{const row=document.createElement('div');row.className='price-row';const left=document.createElement('div'),b=document.createElement('b'),strong=document.createElement('strong');b.textContent=item.name||'';left.appendChild(b);if(item.desc){const sm=document.createElement('small');sm.textContent=item.desc;left.appendChild(sm);}strong.textContent=(extra?'+':'')+Number(item.price||0).toLocaleString('ko-KR')+'원';strong.dataset.base=String(item.price||0);strong.dataset.extra=extra?'1':'0';row.append(left,strong);card.appendChild(row);});};
         if(cards[0])renderRows(cards[0],p.base,false);if(cards[1])renderRows(cards[1],p.extra,true);
       }
     }
