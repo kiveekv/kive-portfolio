@@ -48,7 +48,7 @@
     },
     {
       "id": "live2d",
-      "label": "Live 2D 스케이스"
+      "label": "Live 2D 쇼케이스"
     },
     {
       "id": "banner",
@@ -56,6 +56,14 @@
     }
   ],
   "portfolio": [
+    {
+      "category": "banner",
+      "title": "Live2D 쇼케이스 최종 시안",
+      "path": "./portfolio/1794232331702-0-Live2D-.png",
+      "width": 3001,
+      "height": 4200,
+      "createdAt": "2026-11-09T13:52:16.841Z"
+    },
     {
       "category": "banner",
       "title": "치지직 배너 샘플2",
