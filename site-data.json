@@ -57,6 +57,14 @@
   ],
   "portfolio": [
     {
+      "category": "youtube",
+      "title": "[마리님] 유튜브 채널 아트",
+      "path": "./portfolio/1794232242227-0--.png",
+      "width": 7680,
+      "height": 4320,
+      "createdAt": "2026-11-09T13:50:46.778Z"
+    },
+    {
       "category": "thumbnail",
       "title": "다시보기 썸네일 미리보기(흰)",
       "path": "./portfolio/1794232217075-0--.png",
