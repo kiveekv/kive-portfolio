@@ -57,6 +57,14 @@
   ],
   "portfolio": [
     {
+      "category": "thumbnail",
+      "title": "다시보기 썸네일",
+      "path": "./portfolio/1794232198578-0--.png",
+      "width": 8000,
+      "height": 4501,
+      "createdAt": "2026-11-09T13:50:04.421Z"
+    },
+    {
       "category": "ppt",
       "title": "01 표지",
       "path": "./portfolio/1794232156074-0-01-.png",
