@@ -58,6 +58,12 @@
   "portfolio": [
     {
       "category": "poster",
+      "title": "[방찌님] 포스터",
+      "path": "./portfolio/1794230095954-0--.png",
+      "createdAt": "2026-11-09T13:15:00.812Z"
+    },
+    {
+      "category": "poster",
       "title": "포스터",
       "path": "./portfolio/1794230082401-0--.png",
       "createdAt": "2026-11-09T13:14:47.245Z"
