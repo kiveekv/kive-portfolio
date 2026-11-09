@@ -58,6 +58,18 @@
   "portfolio": [
     {
       "category": "poster",
+      "title": "데뷔 이벤트 포스터",
+      "path": "./portfolio/1794230118863-1--.png",
+      "createdAt": "2026-11-09T13:15:22.940Z"
+    },
+    {
+      "category": "poster",
+      "title": "RE-DEBUT 포스터",
+      "path": "./portfolio/1794230113466-0-RE-DEBUT-.png",
+      "createdAt": "2026-11-09T13:15:18.862Z"
+    },
+    {
+      "category": "poster",
       "title": "[방찌님] 포스터",
       "path": "./portfolio/1794230095954-0--.png",
       "createdAt": "2026-11-09T13:15:00.812Z"
