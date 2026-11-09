@@ -194,6 +194,7 @@ button{font:inherit}
 }
 .portfolio-card:hover img{transform:scale(1.025)}
 .portfolio-card.is-hidden{display:none}
+.portfolio-card[hidden]{display:none !important}
 
 .price-intro{font-size:15px;line-height:1.7;margin:0 0 12px}
 .price-types{
@@ -1064,6 +1065,7 @@ body.price-mode{font-family:"SUIT","Wanted Sans",system-ui,sans-serif}
   ];
   const categoryOrder=['poster','schedule','ppt','thumbnail','replay','youtube','live2d','banner'];
   const categoryLabels={poster:'포스터',schedule:'스케줄표',ppt:'PPT',thumbnail:'다시보기 썸네일',replay:'다시보기 썸네일',youtube:'유튜브 채널아트',live2d:'Live 2D 쇼케이스',banner:'치지직 배너'};
+  function portfolioRatio(id){const key=String(id||'').toLowerCase();if(key==='poster'||key.includes('poster')||key.includes('포스터'))return '5 / 7';if(['schedule','ppt','thumbnail','replay','youtube'].includes(key)||key.includes('스케줄')||key.includes('썸네일')||key.includes('채널'))return '16 / 9';if(key==='banner'||key.includes('배너'))return '32 / 9';return ''; }
   function renderPortfolio(data){
     const sourceCats=(data.portfolioCategories&&data.portfolioCategories.length)?data.portfolioCategories:fallback;
     const cats=sourceCats.slice().map(cat=>({...cat,label:cat.label||categoryLabels[String(cat.id||'')]||String(cat.id||'')}));
@@ -1084,8 +1086,8 @@ body.price-mode{font-family:"SUIT","Wanted Sans",system-ui,sans-serif}
     if((data.portfolioSortMode||'latest')==='latest')sorted.sort((a,b)=>String(b.createdAt||b.uploadedAt||b.date||'').localeCompare(String(a.createdAt||a.uploadedAt||a.date||'')));
     sorted.forEach(item=>{
       if(!item.path)return;
-      const card=document.createElement('a');card.className='portfolio-card';card.href=item.path;card.target='_blank';card.rel='noopener';card.dataset.category=String(item.category||'');card.hidden=card.dataset.category!==activeId;
-      const img=document.createElement('img');img.src=item.path;img.alt=item.title||'';img.loading='lazy';img.decoding='async';card.appendChild(img);grid.appendChild(card);
+      const card=document.createElement('a');card.className='portfolio-card';const ratio=(Number(item.width)>0&&Number(item.height)>0)?`${Number(item.width)} / ${Number(item.height)}`:portfolioRatio(item.category);if(ratio)card.style.aspectRatio=ratio;else card.style.aspectRatio='auto';card.href=item.path;card.target='_blank';card.rel='noopener';card.dataset.category=String(item.category||'');card.hidden=card.dataset.category!==activeId;
+      const img=document.createElement('img');img.src=item.path;img.alt=item.title||'';img.loading='lazy';img.decoding='async';img.style.objectFit='contain';img.style.width='100%';img.style.height='100%';card.appendChild(img);grid.appendChild(card);
     });
     if(!sorted.length||!grid.children.length){const empty=document.createElement('p');empty.className='portfolio-empty';empty.textContent='등록된 포트폴리오가 없습니다.';grid.appendChild(empty);}
     if(activeId)activate(activeId);
