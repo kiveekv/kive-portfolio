@@ -57,7 +57,15 @@
   ],
   "portfolio": [
     {
-      "category": "poster",
+      "category": "schedule",
+      "title": "스케줄표",
+      "path": "./portfolio/1794231256802-0--.png",
+      "width": 8000,
+      "height": 4500,
+      "createdAt": "2026-11-09T13:34:21.782Z"
+    },
+    {
+      "category": "schedule",
       "title": "스케줄표",
       "path": "./portfolio/1794231231849-0--.png",
       "width": 5760,
@@ -65,7 +73,7 @@
       "createdAt": "2026-11-09T13:33:55.427Z"
     },
     {
-      "category": "poster",
+      "category": "schedule",
       "title": "스케줄표",
       "path": "./portfolio/1794231212115-0--.png",
       "width": 8000,
