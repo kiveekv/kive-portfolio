@@ -843,7 +843,7 @@ body.price-mode{font-family:"SUIT","Wanted Sans",system-ui,sans-serif}
 /* 상단 로고는 고정하고 CONTACT 워터마크에만 모션 적용 */
 @keyframes kiveLogoFloat {0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
 #siteLogo{animation:none !important;transform:none !important;opacity:1}
-.contact-logo-box img{width:100% !important;max-width:360px;opacity:.22;animation:kiveLogoFloat 7s ease-in-out infinite;will-change:transform}
+.contact-logo-box img{width:100% !important;max-width:360px;opacity:.10;animation:kiveLogoFloat 7s ease-in-out infinite;will-change:transform}
 @media(max-width:480px){.contact-logo-box img{width:100% !important}}
 @media(prefers-reduced-motion:reduce){.contact-logo-box img{animation:none}}
 </style>
@@ -1114,7 +1114,7 @@ body.price-mode{font-family:"SUIT","Wanted Sans",system-ui,sans-serif}
       const top=document.getElementById('siteLogo');
       const mark=document.querySelector('.contact-logo-box img');
       if(top)top.src=logoPath;
-      if(mark){mark.src=logoPath;mark.style.opacity=String(Math.max(0,Math.min(100,Number(data.logoOpacity??22)))/100);mark.style.animation='kiveLogoFloat 7s ease-in-out infinite';}
+      if(mark){mark.src=logoPath;mark.style.opacity=String(Math.max(0,Math.min(100,Number(data.logoOpacity??10)))/100);mark.style.animation='kiveLogoFloat 7s ease-in-out infinite';}
     }
     if(data.prices){
       const p=data.prices;
@@ -1141,7 +1141,7 @@ body.price-mode{font-family:"SUIT","Wanted Sans",system-ui,sans-serif}
   document.querySelectorAll('.price-type').forEach(btn=>btn.addEventListener('click',()=>{
     document.querySelectorAll('.price-type').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
     const multiplier=Number(btn.dataset.multiplier);
-    document.querySelectorAll('.price-row strong[data-base]').forEach(el=>el.textContent=money(Number(el.dataset.base)*multiplier));
+    document.querySelectorAll('.price-row strong[data-base][data-extra="0"]').forEach(el=>el.textContent=money(Number(el.dataset.base)*multiplier));
   }));
 })();
 </script>
