@@ -1113,7 +1113,7 @@ body.price-mode{font-family:"SUIT","Wanted Sans",system-ui,sans-serif}
     let activeId=cats[0]?.id;
     function activate(id){
       tabs.querySelectorAll('.category').forEach(b=>b.classList.toggle('active',b.dataset.filter===id));
-      grid.classList.toggle('is-poster',id==='poster');
+      grid.classList.toggle('is-poster',id==='poster'||id==='live2d');
       grid.querySelectorAll('.portfolio-card').forEach(card=>card.hidden=card.dataset.category!==id);
     }
     cats.forEach((cat,index)=>{
