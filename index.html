@@ -711,13 +711,13 @@ body.price-mode{font-family:"SUIT","Wanted Sans",system-ui,sans-serif}
 .price-row small{letter-spacing:-.055em !important}
 .notice-block p{letter-spacing:.005em !important}
 .portfolio-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
-.portfolio-grid.is-poster{grid-template-columns:repeat(3,minmax(0,1fr)) !important}
+.portfolio-grid.is-poster,.portfolio-grid.is-showcase{grid-template-columns:repeat(3,minmax(0,1fr)) !important}
 @media(max-width:700px){
   .contact-grid{grid-template-columns:minmax(0,1fr) minmax(120px,.72fr) !important;gap:14px !important}
   .contact-logo-box{width:100% !important;margin:0 !important}
   .contact-list div{grid-template-columns:95px minmax(0,1fr) !important;font-size:12px !important;margin-bottom:13px !important}
   .contact-list dd{padding-left:10px !important}
-  .portfolio-grid.is-poster{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+  .portfolio-grid.is-poster,.portfolio-grid.is-showcase{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
 }
 @media(max-width:480px){
   .contact-grid{grid-template-columns:1fr !important}
@@ -906,6 +906,17 @@ body.price-mode{font-family:"SUIT","Wanted Sans",system-ui,sans-serif}
 }
 </style>
 
+
+<style>
+/* Portfolio image preview modal */
+.portfolio-modal{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,48px);background:rgba(28,20,23,.88);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,visibility .22s ease}
+.portfolio-modal.is-open{opacity:1;visibility:visible;pointer-events:auto}
+.portfolio-modal__image-wrap{position:relative;display:flex;align-items:center;justify-content:center;width:min(100%,1100px);height:min(100%,900px);min-height:0}
+.portfolio-modal__image{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.portfolio-card img,.portfolio-modal__image{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
+.portfolio-modal__close{position:absolute;top:clamp(10px,2vw,22px);right:clamp(10px,2vw,22px);z-index:2;width:44px;height:44px;padding:0;border:1px solid rgba(255,255,255,.55);border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font:400 30px/1 "SUIT",sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center}
+@media(max-width:700px){.portfolio-modal{padding:58px 12px 18px}.portfolio-modal__image-wrap{width:100%;height:100%}.portfolio-modal__close{top:12px;right:12px}}
+</style>
 </head><body><div class="page">
 <header class="site-header">
       <a class="logo-link" href="#info" aria-label="KIVE home" id="homeLogoLink">
@@ -1075,6 +1086,7 @@ body.price-mode{font-family:"SUIT","Wanted Sans",system-ui,sans-serif}
     function activate(id){
       tabs.querySelectorAll('.category').forEach(b=>b.classList.toggle('active',b.dataset.filter===id));
       grid.classList.toggle('is-poster',id==='poster');
+      grid.classList.toggle('is-showcase',id==='live2d');
       grid.querySelectorAll('.portfolio-card').forEach(card=>card.hidden=card.dataset.category!==id);
     }
     cats.forEach((cat,index)=>{
@@ -1086,8 +1098,8 @@ body.price-mode{font-family:"SUIT","Wanted Sans",system-ui,sans-serif}
     if((data.portfolioSortMode||'latest')==='latest')sorted.sort((a,b)=>String(b.createdAt||b.uploadedAt||b.date||'').localeCompare(String(a.createdAt||a.uploadedAt||a.date||'')));
     sorted.forEach(item=>{
       if(!item.path)return;
-      const card=document.createElement('a');card.className='portfolio-card';const ratio=(Number(item.width)>0&&Number(item.height)>0)?`${Number(item.width)} / ${Number(item.height)}`:portfolioRatio(item.category);if(ratio)card.style.aspectRatio=ratio;else card.style.aspectRatio='auto';card.href=item.path;card.target='_blank';card.rel='noopener';card.dataset.category=String(item.category||'');card.hidden=card.dataset.category!==activeId;
-      const img=document.createElement('img');img.src=item.path;img.alt=item.title||'';img.loading='lazy';img.decoding='async';img.style.objectFit='contain';img.style.width='100%';img.style.height='100%';card.appendChild(img);grid.appendChild(card);
+      const card=document.createElement('a');card.className='portfolio-card';const ratio=(Number(item.width)>0&&Number(item.height)>0)?`${Number(item.width)} / ${Number(item.height)}`:portfolioRatio(item.category);if(ratio)card.style.aspectRatio=ratio;else card.style.aspectRatio='auto';card.href='#';card.removeAttribute('target');card.removeAttribute('rel');card.setAttribute('role','button');card.setAttribute('aria-haspopup','dialog');card.dataset.category=String(item.category||'');card.hidden=card.dataset.category!==activeId;
+      const img=document.createElement('img');img.src=item.path;img.alt=item.title||'';img.loading='lazy';img.decoding='async';img.fetchPriority='low';img.draggable=false;img.style.objectFit='contain';img.style.width='100%';img.style.height='100%';card.appendChild(img);grid.appendChild(card);
     });
     if(!sorted.length||!grid.children.length){const empty=document.createElement('p');empty.className='portfolio-empty';empty.textContent='등록된 포트폴리오가 없습니다.';grid.appendChild(empty);}
     if(activeId)activate(activeId);
@@ -1145,6 +1157,56 @@ body.price-mode{font-family:"SUIT","Wanted Sans",system-ui,sans-serif}
     const multiplier=Number(btn.dataset.multiplier);
     document.querySelectorAll('.price-row strong[data-base][data-extra="0"]').forEach(el=>el.textContent=money(Number(el.dataset.base)*multiplier));
   }));
+})();
+</script>
+
+<div class="portfolio-modal" id="portfolioModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="포트폴리오 이미지 미리보기">
+<button class="portfolio-modal__close" type="button" aria-label="닫기">×</button><div class="portfolio-modal__image-wrap"><img class="portfolio-modal__image" id="portfolioModalImage" alt=""></div></div>
+<script>
+(function(){
+  const modal=document.getElementById('portfolioModal');
+  const image=document.getElementById('portfolioModalImage');
+  const close=modal&&modal.querySelector('.portfolio-modal__close');
+  const grid=document.getElementById('portfolioGrid');
+  if(!modal||!image||!close||!grid)return;
+  let previousFocus=null;
+  function open(card){
+    const img=card.querySelector('img');
+    if(!img)return;
+    previousFocus=card;
+    image.src=img.currentSrc||img.src;
+    image.alt=img.alt||'포트폴리오 이미지';
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    close.focus();
+  }
+  function shut(){
+    if(!modal.classList.contains('is-open'))return;
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden','true');
+    image.removeAttribute('src');
+    document.body.style.overflow='';
+    if(previousFocus&&previousFocus.focus)previousFocus.focus();
+  }
+  grid.addEventListener('click',e=>{
+    const card=e.target.closest('.portfolio-card');
+    if(!card)return;
+    e.preventDefault();
+    open(card);
+  });
+  grid.addEventListener('auxclick',e=>{if(e.target.closest('.portfolio-card'))e.preventDefault()});
+  close.addEventListener('click',shut);
+  modal.addEventListener('click',e=>{if(e.target===modal)shut()});
+  document.addEventListener('keydown',e=>{
+    if(!modal.classList.contains('is-open'))return;
+    if(e.key==='Escape'){e.preventDefault();shut()}
+    if(e.key==='Tab'){e.preventDefault();close.focus()}
+  });
+  [grid,modal].forEach(area=>{
+    area.addEventListener('contextmenu',e=>{if(e.target.closest('img,.portfolio-card'))e.preventDefault()});
+    area.addEventListener('dragstart',e=>{if(e.target.closest('img,.portfolio-card'))e.preventDefault()});
+  });
 })();
 </script>
 </body></html>
